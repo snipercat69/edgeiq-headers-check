@@ -1,98 +1,55 @@
-# 🛡️ EdgeIQ Headers Check
+# headers.check — HTTP Security Headers Scanner
 
-**HTTP security headers analyzer — grade your site's security posture in seconds.**
-
-Scan any URL's HTTP security response headers and get an A-F grade with detailed analysis of what's present, missing, and misconfigured.
-
-[![Project Stage](https://img.shields.io/badge/Stage-Beta-blue)](https://edgeiqlabs.com)
-[![Python](https://img.shields.io/badge/Python-3.8+-green)](https://python.org)
-[![License](https://img.shields.io/badge/License-MIT-orange)](LICENSE)
-
----
-
-## What It Does
-
-Analyzes HTTP security headers returned by any URL and assigns a letter grade (A-F) based on industry security standards. Identifies which headers are present, missing, or misconfigured, with actionable remediation guidance.
-
----
-
-## Key Features
-
-- **A-F security grade** — industry-standard scoring for security header posture
-- **9 security headers checked** — HSTS, CSP, X-Frame-Options, X-Content-Type-Options, Referrer-Policy, Permissions-Policy, X-XSS-Protection, Cache-Control
-- **Remediation guidance** — per-header fix recommendations (Pro)
-- **Batch scanning** — check multiple URLs in one run
-- **JSON export** — structured results for reporting
-
----
-
-## Prerequisites
-
-- Python 3.8+
-- `requests` library
-
----
-
-## Installation
-
-```bash
-git clone https://github.com/snipercat69/edgeiq-headers-check.git
-cd edgeiq-headers-check
-pip install -r requirements.txt
-```
-
----
+Analyze HTTP security headers on any URL. Get an A-F security grade with detailed breakdown.
 
 ## Quick Start
 
 ```bash
-# Grade a site's headers
 python3 headers_check.py --url https://example.com
+```
 
-# Detailed analysis with headers list
-python3 headers_check.py --url https://example.com --verbose
+## Pro Mode (Remediation Guide)
 
-# Pro tier (unlimited + remediation guide)
+```bash
 python3 headers_check.py --url https://example.com --pro
 ```
 
----
+## Free vs Pro
 
-## Security Headers Checked
+| Feature | Free | Pro |
+|---------|------|-----|
+| Scans/day | 20 | Unlimited |
+| A-F Grade | ✓ | ✓ |
+| Header Status | ✓ | ✓ |
+| Remediation Guide | | ✓ |
 
-| Header | Security Purpose |
-|--------|-----------------|
-| Strict-Transport-Security | Force HTTPS |
-| Content-Security-Policy | XSS/injection protection |
-| X-Frame-Options | Clickjacking prevention |
-| X-Content-Type-Options | MIME sniffing prevention |
-| Referrer-Policy | Control referrer information |
-| Permissions-Policy | Restrict browser features |
-| X-XSS-Protection | Legacy XSS filter (deprecated but still checked) |
-| Cache-Control | Sensitive data caching control |
+## Security Headers Analyzed
 
----
+- **Strict-Transport-Security (HSTS)** — Enforces HTTPS
+- **Content-Security-Policy (CSP)** — Blocks XSS/injection
+- **X-Frame-Options** — Prevents clickjacking
+- **X-Content-Type-Options** — Stops MIME sniffing
+- **Referrer-Policy** — Controls referrer info
+- **Permissions-Policy** — Browser feature access
+- **X-XSS-Protection** — Legacy XSS filter
+- **Cache-Control** — Caching behavior
 
-## Pricing
+## Install Dependencies
 
-| Tier | Price | Features |
-|------|-------|----------|
-| **Free** | $0 | 20 scans/day, A-F grade, header list |
-| **Pro** | $5/mo | Unlimited scans, full remediation guide, priority support |
+```bash
+pip install colorama requests
+```
 
----
+## API
 
-## Integration with EdgeIQ Tools
+```python
+from headers_check import fetch_headers, analyze_headers
 
-- **[EdgeIQ Alerting System](https://github.com/snipercat69/edgeiq-alerting-system)** — alert on poor header grades
-- **[EdgeIQ Security Report Generator](https://github.com/snipercat69/edgeiq-security-report-generator)** — include header grades in reports
+headers = fetch_headers("https://example.com")
+results, grade, score = analyze_headers(headers)
+```
 
----
+## License
 
-## Support
-
-Open an issue at: https://github.com/snipercat69/edgeiq-headers-check/issues
-
----
-
-*Part of EdgeIQ Labs — [edgeiqlabs.com](https://edgeiqlabs.com)*
+Pro subscription required for commercial use.
+https://buy.stripe.com/bJedRb8dZeJD9Ig0487wA0w
